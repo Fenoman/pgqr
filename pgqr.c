@@ -55,8 +55,14 @@ pgqr(PG_FUNCTION_ARGS)
 		elog(ERROR, "accepted scale: minimum 1");
 	
 	bmp_size = EncodeData(qr_char, level, version, scale, &p_bmp);
-	if(!p_bmp || bmp_size<=0)	
-		elog(ERROR, "invalid encoding");
+	if(!p_bmp)	
+		elog(ERROR, "bmp forming error");
+	if(bmp_size = -1)	
+		elog(ERROR, "No data");
+	if(bmp_size = -2)	
+		elog(ERROR, "Over-capacity - 1");
+	if(bmp_size = -3)	
+		elog(ERROR, "Over-capacity - 2");
 		
 	blobout=(bytea*)palloc(VARHDRSZ+bmp_size);
 	memcpy(VARDATA(blobout), p_bmp, bmp_size);

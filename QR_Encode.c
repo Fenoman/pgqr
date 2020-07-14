@@ -1813,7 +1813,7 @@ int EncodeData(LPCSTR lpsSource, int nLevel, int nVersion, int scale, unsigned c
 	 nEncodeVersion = GetEncodeVersion(nVersion, lpsSource, ncLength, m_nBlockLength, m_byBlockMode,m_byDataCodeWord);
 
 	if (nEncodeVersion == 0)
-		return -1;
+		return -2;
 			// Over-capacity
 	if (nVersion == 0)
 	{
@@ -1832,7 +1832,7 @@ int EncodeData(LPCSTR lpsSource, int nLevel, int nVersion, int scale, unsigned c
 			if (bAutoExtent)
 				QR_m_nVersion = nEncodeVersion;   // Automatic extended version (model number)
 			else
-				return -1;  // Over-capacity
+				return -3;  // Over-capacity
 		}
 	}
 
